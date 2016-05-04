@@ -1,5 +1,5 @@
 # Skinny Bones Gemfile
-source "https://ruby.taobao.org"
+source "https://gems.ruby-china.org/"
 
 gem "jekyll", "~> 3.0"
 gem "jekyll-sitemap"

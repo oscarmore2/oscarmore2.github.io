@@ -1,11 +1,12 @@
 GEM
-  remote: https://ruby.taobao.org/
+  remote: https://gems.ruby-china.org/
   specs:
     addressable (2.3.8)
     colorator (0.1)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
+    ffi (1.9.10-x86-mingw32)
     jekyll (3.1.1)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
@@ -59,6 +60,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   jekyll (~> 3.0)
