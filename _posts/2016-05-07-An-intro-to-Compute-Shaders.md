@@ -1,27 +1,51 @@
+---
+layout: article
+categories: unity
+title: "Unity 材质简易教程：compute shader简介"
+---
 
-
-Unity Shader Tutorial: An intro to Compute Shaders
-
+本文转载并翻译自：
 Coxlin's Blog 
-http://www.tuicool.com/articles/hit/z2qQfeJ
+
+http://www.lindsaygcox.co.uk/tutorials/unity-shader-tutorial-an-intro-to-compute-shaders
+
+原标题为：
+Unity Shader Tutorial: An intro to Compute Shaders
 
 
 Are you ready to turn this up to 11? We are going to look at some real “Triple A” business now. The world of compute shaders. So what are these mysterious  creatures that you probably don’t know exist in Unity?
 
+你准备好学更多的东西了吗？现在要带踏入你真正3A级领域了--可计算着色器(compute shaders)*的国度。好，这个你根本不知道其存在的怪物是一种怎么样的东东呢？
+
+*译者注：关于“compute shaders”的翻译，我是纠结了很久。我取“可计算着色器”这个译名是因为compute shaders则提供了一个入口让GPU可以实现一般性的计算。
+
 To be honest, I had completely forgot they were there and I was looking at a fur tutorial (that doesn’t actually seem to work by the way and was also a really dirty way of doing it ) and then remembered my mate had said you could probably do grass and fur in one. I think he actually meant geometry shaders, but compute shaders peeked my interest.
+
+说真的，我基本忘记他们的存在了，而当我找一些关于毛发效果的教程(并没有想象中这么有用而且方法太糟糕) 的时候才想起我的基友说过草地和毛发的效果可以用同一种方法实现。我想它说的是(geometry shaders)几何着色器，但计算着色器戳中了我的兴趣点。
 
 However, after digging around the net it turns out that info surrounding them when it comes to Unity seems quite scarce.
 
-Let’s start from the top!
+可是，当我翻遍整个网络发现针对Unity的计算着色器的信息少之又少。
 
-##What is a compute shader, and why should I care?
+Let’s start from the top!
+来我们从头说起
+
+#计算着色器是什么，为什么要了解它？
 In Microsoft’s fancy terms, “a compute shader is a programmable shader  stage that expands Microsoft Direct3D11 beyond graphics programming” and “a compute shader provides high-speed general purpose computing and takes advantage of the large numbers of parallel processors on the GPU”.
+
+在微软的花俏术语里面，它是这么说：“可计算着色器是一种可编程的着色处理过程，它扩展了微软Direct3D 11并且超越了图形编程了领域”，“计算着色器利用了GPU大量的并行处理的特性提供了高速的通用计算功能”。
 
 In simple terms, a compute shader is a program that runs on the graphics card that does stuff outside of the normal rendering pipeline.
 
+说得简单一点，可计算着色器是一个在显卡上运行的程序，并且完成可以在正常渲染管线之外的任务。
+
 So you are probably thinking “OK, I kind of get it, you can run some logic and put some work onto the graphics card, but why would I want to do that?” Well these shaders are really good at maths and parallelization, i.e. they are really good at performing tasks where you are doing a lot of the same thing. In other words, they are really good at tasks that involve applying the same set of calcualtions to every element in a given data set.
 
+你可能会说：“好吧，我好像明白了一丢丢，这玩意就是让一些逻辑和任务运行在显卡上面，但我干嘛要用它呢？”其实啊，这些着色器对数学(尤其浮点)和并行计算方面有很大的本事。也就是说，他们同时处理同一种处理任务有很大本事。换句话说，他们非常擅长处理数据集合每个元素的运算。
+
 This is probably a kind of crappy exlanation, so lets wind the clock back a bit to when I was just gracing the planet with my presence. The 90s. It was a beautiful time with games like Doom, Final Fantasy 7, The Legend of Zelda: Ocarina of Time, Crash Bandicoot, Tekken 3… do I need to go on? Essentially lots of 3D games and PCs started going out with graphics cards. Stuff like this bad boy.
+
+这个解释有点蹩脚，所以让我略穿越一下，回到我对着星球放空的时候，那是90年代(...)。那真是游戏的黄金岁月，DOOM，最终幻想7，塞尔达传说： 时之笛，古惑狼赛车，铁拳3...还要在列举吗？(当时好游戏太多，本人补刀：魔法门，古墓丽影)。大部分的3D游戏都是PC游戏，尤其是有了显卡之后。
 
 http://img1.tuicool.com/rqia6ff.jpg!web
 
