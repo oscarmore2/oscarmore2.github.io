@@ -87,7 +87,7 @@ The first thing you will notice is that this is not CG. This is a Direct X 11 st
 
 首先你要意识到的这不是CG语言，这个是DirectX 11 的HLSL帅哥。绑好安全带哦，要飞代码了。
 
-{% hightlight C %}
+{% highlight C %}
 // Each #kernel tells which function to compile; you can have many kernels
 // 每个 #kernel (内核) 都指定了哪个方法需要编译，你可以指定多个内核
 #pragma kernel CSMain
@@ -104,7 +104,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
      Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
 }
-{% endhightlight %}
+{% endhighlight %}
 
  The #pragma kernel CSMain  is the first thing we see in our shader. Kind of like the other shaders, this is us telling the program where our entry point is, in this case CSMain. A compute shader can have many a function and you can call a specific funciton from a script. More on that later.
 
@@ -142,7 +142,7 @@ But hold up, before we start lets change up our script that Unity spat out and m
 
 不过且慢，在我们开始修改脚步之前，我们要需要先改一下我们的compute shader。
 
-{% hightlight C %}
+{% highlight C %}
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel CSMain
 
@@ -153,7 +153,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 {
     buffer1[id.x] = mul(id.x, 2.0);
 }
-{% endhightlight %}
+{% endhighlight %}
 
 You can see we switched out the texture for a structured buffer. This is just an array of data consisting of a single data type, in this case it is an int. In the code you can see we are just taking the id of the thread and multiplying it by 2.
 
@@ -162,7 +162,7 @@ You can see we switched out the texture for a structured buffer. This is just an
 Cool lets write a new script.
 接下来我们创建一个Unity脚本。
 
-{% hightlight CSharp %}
+{% highlight CSharp %}
 using UnityEngine;
 using System.Collections;
 
@@ -191,7 +191,7 @@ public class RunComputeShader : MonoBehaviour
          buffer.Release();
      }
 }
-{% endhightlight %}
+{% endhighlight %}
 
 Firstly we are creating a compute buffer the size of an int, a buffer that ComputeShader programs use to store arbitrary data and then we are using the SetBuffer to tell the shader to dump data in there. We use the dispatch function to run our shader and then grab the work the shader has done.
 
