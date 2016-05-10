@@ -4,12 +4,12 @@ categories: unity
 title: "Unity多线程（Thread）和主线程（MainThread）交互使用类——Loom工具分享"
 ---
 
-#博主按：
+##博主按：
 无意中看到这篇文章，Loom这个插件的确让我震惊。想当时曾经做一个项目，里面有一个图片处理的模块非常耗时。当时只能在文件读写阶段使用多线程处理，其他图片处理过程都因为Unity本身的限制而没法使用多线程，导致用户体验下降。今日见此插件，算是了了心头的困惑。同时分享出来供大家学习。
 
 ###本文转载自：http://dsqiu.iteye.com/blog/2028503
 
-#第一部分:问题描述
+##第一部分:问题描述
 熟悉Unity的developer都知道在Unity中的线程不能使用Unity的对象，但可以使用Unity的值类型变量，如Vector3等。这样就使得线程在Unity中显的很鸡肋和蹩脚，因为很多函数很都是UnityEngine类或函数的调用的，对于哪些是可以在多线程使用，风雨冲进行了如下总结：
 1. 变量(都能指向相同的内存地址)都是共享的
 2. 不是UnityEngine的API能在分线程运行
@@ -41,7 +41,7 @@ Texture2D tt = new Texture2D(10,10);
 结论: 分线程可以做 基本类型的计算， 以及非Unity(包括.Net及SDK)的API。
 D.S.Qiu(博客作者) 觉得Unity做了这个限制，主要是Unity的函数执行机制是帧序列调用，甚至连Unity的协程Coroutine的执行机制都是确定的，如果可以使用多线程访问UnityEngine的对象和api就得考虑同步问题了，也就是说Unity其实根本没有多线程的机制，协程只是达到一个延时或者是当指定条件满足是才继续执行的机制。
 
-#第二部分：Threads on a Loom
+##第二部分：Threads on a Loom
 我们的项目目前还有没有比较耗时的计算，所以还没有看到Thread的使用。本来一直没有太考虑着方面的事情，直到在UnityGems.com看到Loom这个类，叹为观止呀。这是他们官方的介绍：
 
 Our class is called Loom.  Loom lets you easily run code on another thread and have that other thread run code on the main game thread when it needs to.

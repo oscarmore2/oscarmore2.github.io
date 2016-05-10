@@ -13,7 +13,7 @@ Coxlin's Blog
 Unity Shader Tutorial: An intro to Compute Shaders
 
 
-# 从头说起
+##从头说起
 你准备好学更多的东西了吗？现在要带踏入你真正3A级领域了--compute shaders(可计算着色器)*的国度。好，这个你根本不知道其存在的怪物是一种怎么样的东东呢？
 
 *译者注：关于“compute shaders”的翻译，我是纠结了很久。我取“可计算着色器”这个译名是因为compute shaders则提供了一个入口让GPU可以实现一般性的计算。
@@ -26,7 +26,7 @@ Unity Shader Tutorial: An intro to Compute Shaders
 
 来我们从头说起
 
-#Compute Shaders是什么，为什么要了解它？
+##Compute Shaders是什么，为什么要了解它？
 
 在微软的花俏术语里面，它是这么说：“compute shaders是一种可编程的着色处理过程，它扩展了微软Direct3D 11并且超越了图形编程了领域”，“compute shaders利用了GPU大量的并行处理的特性提供了高速的通用计算功能”。
 
@@ -57,7 +57,7 @@ Unity Shader Tutorial: An intro to Compute Shaders
 
 基本上，你要是这么渴望性能的话甚至还能驾驭CPU让它做非图形的任务。
 
-# 管他呢，入坑吧！
+##管他呢，入坑吧！
 
 That’s the attitude I want!
 这是我要的态度
@@ -177,7 +177,7 @@ public class RunComputeShader : MonoBehaviour
 
 很不错吧。这虽然算不上世界上最厉害的技术，但告诉你的显卡除了渲染画面以外还能干别的东西。
 
-# 总结
+##后记
 
 这个文章向你们展示了compute shaders的技术。虽然我不认为它们哪里都能用得上，但GPU可以干很多很酷的多线程的计算。不过话说回来，GPU能够做的东西目前还是很有限的，如果你要朝这个方向发展，你需要解决这个限制性的问题。假如你的游戏对画面要求比较高，可以考虑最大化地把一些本应在CPU完成的运算放到GPU上。但如果你的游戏对画面的要求一般的话，通过Computer Shader GPU也可以完成一些游戏逻辑(尤其是类似AI Pathfinding 之类的大计算量的操作)。
 
