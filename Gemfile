@@ -5,4 +5,6 @@ gem "jekyll", "~> 3.0"
 gem "jekyll-sitemap"
 gem "jekyll-gist"
 gem "octopress", "~> 3.0"
-gem "jekyll-jupyter-notebook"
+gem "jekyll-jupyter-notebook" path: "."
+
+gemspec
