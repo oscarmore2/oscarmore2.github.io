@@ -19,6 +19,8 @@ highlighter: rouge
 gems:
   - jekyll-sitemap
   - jekyll-gist
+  - jekyll-jupyter-notebook
+
 
 
 # Octopress configuration
