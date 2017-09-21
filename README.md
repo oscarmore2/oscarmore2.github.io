@@ -1,17 +1,58 @@
-# Skinny Bones Jekyll Starter
+# README
 
-Just a little something I'm using to jump start a site refresh. I like to think of it as a starter for building your own Jekyll site. I purposely keep the styling minimal and bare to make it easier to add your own flare and markup.
+## Name
 
-I'm currently using a variation of it on my personal website [Made Mistakes](http://mademistakes.com) with some modifications. To learn more about how to use the theme and install it check out the [Skinny Bones demo](http://mmistakes.github.io/skinny-bones-jekyll/) (*work in progress*).
+Jekyll Jupyter Notebook plugin
 
-![screenshot of Skinny Bones](http://mmistakes.github.io/skinny-bones-jekyll/images/skinny-bones-theme-feature.jpg)
+## Description
 
----
+Jekyll Jupyter Notebook plugin adds [Jupyter](http://jupyter.org/) Notebook support to Jekyll. You can embed Jupyter Notebooks into your texts.
 
-## Notable Features
+## Install
 
-* Jekyll 3.x and GitHub Pages compatible.
-* Stylesheet built using Sass.
-* Data files for easier customization of the site navigation/footer and for supporting multiple authors.
-* Optional Disqus comments, table of contents, social sharing links, and Google AdSense ads.
-* And more.
+Add the following line to your site's `Gemfile`:
+
+```ruby
+gem "jekyll-jupyter-notebook"
+```
+
+Add the following line to your site's `_config.yml`:
+
+```yaml
+gems:
+  - jekyll-jupyter-notebook
+```
+
+## Usage
+
+Put a Jupyter Notebook (`sample.ipynb`) to the directory that has the target text (`my-text.md`) like the following:
+
+```text
+.
+|-- my-text.md
+`-- sample.ipynb
+```
+
+Put the following tag into the target text:
+
+```markdown
+{% jupyter_notebook sample.ipynb %}
+```
+
+If you use kramdown as Markdown parser and get strange result, try to surround `{% jupyter_notebook ...%}` with `{::nomarkdown}` and `{:/nomarkdown}` like the following:
+
+```markdown
+{::nomarkdown}
+{% jupyter_notebook sample.ipynb %}
+{:/nomarkdown}
+```
+
+## Authors
+
+* Kouhei Sutou \<kou@clear-code.com\>
+
+## License
+
+Apache License 2.0. See doc/text/apache-2.0.txt and NOTICE.txt for details.
+
+(Kouhei Sutou has a right to change the license including contributed patches.)
